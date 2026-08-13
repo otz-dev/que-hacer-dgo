@@ -1,0 +1,92 @@
+.MuiPickersCalendarHeader-root {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  background-color: red !important;
+  height: 550px;
+  border: solid 1px red !important;
+}
+
+.soni{
+    border: solid 1px red !important;
+    width: 100%;
+    height: 100%;
+    table-layout: fixed;
+}
+
+.calendar-container{
+    height: 80vh;
+}
+
+.calendar-header {
+    /* background-color: lightgray; */
+    /* height: 100px; */
+}
+
+.weekend-day{
+    background-color: rgba(184, 184, 184, 0.222);
+}
+
+.calendar-day {
+    /* background-color: aqua !important; */
+    /* height: (100/7)px;
+    width: (100/5)px; */
+}
+
+.day-cell {
+    .dayMonth{
+        /* background-color: aqua; */
+        /* justify-content: right;
+         */
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 10%;
+        /* border: solid 1px red; */
+    }
+
+    ul {
+        /* color: white; */
+        list-style-type: none;
+        padding: 1%;
+        margin: 0%;
+
+        /* overflow: auto;
+            text-overflow: ellipsis;
+            white-space: nowrap; */
+            
+        li {
+            /* border: solid 1px yellow; */
+            justify-content: center;
+            display: flex;         /* Enables Flexbox layout */
+            flex-direction: row;   /* Left-to-right main axis */
+            align-items: center;
+            justify-content: space-between;
+            padding: 2%;
+
+            /* overflow: auto;
+            text-overflow: ellipsis;
+            white-space: nowrap; */
+
+            .event-type {
+                width: 10px;
+                height: 10px;
+                background-color: #3498db;
+                border-radius: 50%;
+            }
+
+            .event-title {
+                /* color: red; */
+                max-width: 75%;
+                padding: 1%;
+                text-overflow: ellipsis !important;
+                 overflow: auto;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            }
+
+        }
+    }
+    
+}

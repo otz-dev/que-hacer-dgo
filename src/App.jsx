@@ -1,12 +1,11 @@
-import { Bienvenida } from './Bienvenida/Bienvenida';
+import {MonthAgenda} from './Agenda/MonthAgenda';
 
 function App() {
-
   return (
     <>
-      <Bienvenida />
+    {<MonthAgenda />}
     </>
   )
-}
+} 
 
 export default App
