@@ -68,6 +68,7 @@ export const DayCell = (weekDay, weekNumber, dayLimit, firstWeekDayOfTheMonth, d
                         setIsEventModalOpen(true);
                         setDisplayEventData({
                             id: `${eventsArray.length? 'all-events': 'no-events'}`,
+                            start:  eventsArray[0]?.start
                         });
                         }}> { ((weekDay+(7*weekNumber))-firstWeekDayOfTheMonth)+1 } 
                     </strong>

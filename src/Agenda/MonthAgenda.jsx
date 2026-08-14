@@ -15,7 +15,6 @@ export const MonthAgenda = ()=> {
     const [isEventModalOpen, setIsEventModalOpen] = useState(false);
     const [{id, start, end, title, type, price, placeName, address, phone}, setDisplayEventData] = useState({});
 
-    console.log('????', id, start, end, title, type)
     const generateWeek = (weekNumber, dayLimit, firstWeekDayOfTheMonth)=>{
         return (
         <tr className='calendar-week-row'>
@@ -82,17 +81,31 @@ export const MonthAgenda = ()=> {
             }}>{`Siguente Mes ${' '} >>>`}</button>
         </div>
 
-        {isEventModalOpen && <EventModal isOpen={isEventModalOpen} onClose={()=>{setIsEventModalOpen(false)}} title={title} children={
-            <>
-            
-            <p>Tipo: {type}</p>
-            <p>Fecha: {new Date(start).toLocaleDateString()}</p>
-            <p>Hora: {`${new Date(start).toLocaleTimeString()} - ${new Date(end).toLocaleTimeString()}`}</p>
-            <p>Costo: {price}</p>
-            <p>Lugar: {placeName}</p>
-            <p>Dirección: {address}</p>
-            <p>ID: {id}</p>
-            </>
+        {isEventModalOpen && <EventModal isOpen={isEventModalOpen} onClose={()=>{setIsEventModalOpen(false)}} 
+        title={
+            id == 'all-events' && new Date(start).toLocaleDateString() || 
+            id == 'no-events' && 'No hay eventos para esta fecha'||  
+            title
+        } 
+        children={
+        id === 'all-events' &&  <>
+            <p>Existen multiples eventos agendados para esta fecha, <a href="#">visita la agenda del día.</a></p>
+        </> ||
+        id == 'no-events' && 
+        <>
+            <p>Aún no se han registrados eventos para esta fecha</p>
+        </> || 
+        <>
+        <p>Tipo: {type}</p>
+        <p>Fecha: {new Date(start).toLocaleDateString()}</p>
+        <p>Hora: {`${new Date(start).toLocaleTimeString()} - ${new Date(end).toLocaleTimeString()}`}</p>
+        <p>Costo: {price}</p>
+        <p>Lugar: {placeName}</p>
+        <p>Dirección: {address}</p>
+        <p>ID: {id}</p>
+        </> 
+
+
         }/>}
     </>
   );
