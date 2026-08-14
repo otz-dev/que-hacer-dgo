@@ -76,7 +76,7 @@ export const MonthAgenda = ()=> {
                     setMonth(()=>months[selectedMonthNumber-1]);
                     setFirstWeekDayOfTheMonth(()=>new Date( currentDate.getFullYear(), selectedMonthNumber-1, 1));
                     setDaysInMonth(new Date(currentDate.getFullYear(), selectedMonthNumber-2, 0).getDate()); // this is -2 considering that the state hasn't been updated and the actual month number
-                }}>Mes Anterior</button> 
+                }}> {`<<< ${' '} Mes Anterior`}</button> 
                 
                 <button disabled={!(selectedMonthNumber<11)} className='month-button' onClick={()=>{
                     setSelectedMonthNumber((prevSelectedMonthNumber)=>prevSelectedMonthNumber+1)
@@ -84,7 +84,7 @@ export const MonthAgenda = ()=> {
                     setFirstWeekDayOfTheMonth(()=>new Date( currentDate.getFullYear(), selectedMonthNumber+1, 1));
                     setDaysInMonth(new Date(currentDate.getFullYear(), selectedMonthNumber+2, 0).getDate()); // this is -2 considering that the state hasn't been updated and the actual month number
 
-                }}>Siguente Mes</button>
+                }}>{`Siguente Mes ${' '} >>>`}</button>
             </div>
         </main>
     

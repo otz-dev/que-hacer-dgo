@@ -70,13 +70,14 @@
 }
 
 .sarahi{
-    padding: 0%;
+    display: flex;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    justify-content: space-around;
 
-    /* background-color: #3498db; */
-    height: 100px !important;
     .month-button{
         width: 40%;
         position: relative;
-        top: 50%
+        top: 50%;
     }
 }
