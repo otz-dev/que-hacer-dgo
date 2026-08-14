@@ -9,7 +9,7 @@ export const MonthAgenda = ()=> {
 
     const generateWeek = (weekNumber, dayLimit, firstWeekDayOfTheMonth)=>{
         return (
-        <tr>
+        <tr className='calendar-week-row'>
             <td className='calendar-day weekend-day'>{DayCell(0, weekNumber, dayLimit, firstWeekDayOfTheMonth, daysInMonth)}</td> 
             <td className='calendar-day'>{DayCell(1, weekNumber, dayLimit, firstWeekDayOfTheMonth, daysInMonth)}</td> 
             <td className='calendar-day'>{DayCell(2, weekNumber, dayLimit, firstWeekDayOfTheMonth, daysInMonth)}</td> 
@@ -35,7 +35,7 @@ export const MonthAgenda = ()=> {
                 </tr>
             </thead>
 
-            <tbody className='table-body-month'>
+            <tbody>
             {generateWeek(0, (FirstWeekDayOfTheMonth*0)+(FirstWeekDayOfTheMonth), FirstWeekDayOfTheMonth)}
             {generateWeek(1, (FirstWeekDayOfTheMonth*1)+(FirstWeekDayOfTheMonth), FirstWeekDayOfTheMonth)}
             {generateWeek(2, (FirstWeekDayOfTheMonth*2)+(FirstWeekDayOfTheMonth), FirstWeekDayOfTheMonth)}
