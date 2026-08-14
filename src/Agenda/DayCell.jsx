@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { EventModal } from "../EventModal/EventModal";
 
 export const DayCell = (weekDay, weekNumber, dayLimit, firstWeekDayOfTheMonth, daysInMonth)=>{
     
@@ -61,7 +60,6 @@ export const DayCell = (weekDay, weekNumber, dayLimit, firstWeekDayOfTheMonth, d
 
     console.log(realMonthDay, eventsArray)
     return (
-        <>
         <div className="day-cell">
             {
                 displayEventsItems && <div className="dayMonth">
@@ -100,8 +98,6 @@ export const DayCell = (weekDay, weekNumber, dayLimit, firstWeekDayOfTheMonth, d
                 }
             </ul>}
         </div>
-        <EventModal eventId={eventIdItem} isEventModalOpen={isEventModalOpen} setIsEventModalOpen={setIsEventModalOpen}/>
-        </>
     );
 
 }
