@@ -57,13 +57,21 @@ export const MonthAgenda = ()=> {
 
   return (
     <>
-        <h1>Que hacer en Durango</h1>
-        <h2>{`Eventos en ${month}`}</h2>
-        <div className='calendar-container' >
-            {
-                generateMonthDaysLayout(FirstWeekDayOfTheMonth.getDay())
-            }
-        </div>
+    <header><h1>Que hacer en Durango</h1></header>
+        
+        <main className='calendar-container'>
+            <h2>{`Eventos en ${month}`}</h2>
+            <div  >
+                {
+                    generateMonthDaysLayout(FirstWeekDayOfTheMonth.getDay())
+                }
+            </div>
+        </main>
+    
+    <footer>
+        <div> <strong>Te gustaría que tu evento apareciera en nuestro calendario</strong></div>
+        <div>  envia un correo: abc.abc@quehacerendurango.com</div>
+    </footer>
     </>
   );
 }

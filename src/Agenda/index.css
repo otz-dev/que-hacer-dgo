@@ -12,7 +12,7 @@
     height: 100%;
     table-layout: fixed;
     .calendar-week-row{
-        height: 150px; 
+        height: 100px;
     }
 }
 
@@ -30,9 +30,6 @@
 }
 
 .calendar-day {
-    /* background-color: aqua !important; */
-    /* height: (100/7)px;
-    width: (100/5)px; */
         border: solid 1px;
         vertical-align: top; 
 }
@@ -42,10 +39,12 @@
         display: flex;
         justify-content: flex-end;
         padding-right: 10%;
-        /* border: solid 1px; */
+        /* border: solid 1px purple; */
     }
 
     ul {
+        /* border: solid 1px green; */
+        height: 70px;
         list-style-type: none;
         padding: 1%;
         margin: 0%;

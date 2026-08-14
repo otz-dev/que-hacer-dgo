@@ -82,14 +82,14 @@ export const DayCell = (weekDay, weekNumber, dayLimit, firstWeekDayOfTheMonth, d
                                 
                             }}>
                                 {
-                                    index < 2 && 
+                                    index < 1 && 
                                     <>
                                     <div className="event-type" id={`event-type-item-${event.id}`}/>
                                     <span className="event-title" id={`event-title-${event.id}`}>{event.title}</span>
                                     <span id={`event-time-${event.id}`}>{event.time}</span>
                                     </>  
                                     || 
-                                    index === 2 && <span id={`more-events-`}>... Más Eventos</span>
+                                    index === 1 && <span id={`more-events-`}>... Más Eventos</span>
                                 }
                             </li>
                             )
