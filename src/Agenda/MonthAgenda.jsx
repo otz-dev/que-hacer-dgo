@@ -10,8 +10,8 @@ export const MonthAgenda = ()=> {
     const currentDate = new Date();
     const [month, setMonth] = useState(months[currentDate.getMonth()]);
     const [selectedMonthNumber, setSelectedMonthNumber] = useState(currentDate.getMonth());
-    const [firstWeekDayOfTheMonth, setFirstWeekDayOfTheMonth] = useState(new Date( currentDate.getFullYear(), currentDate.getMonth()+1, 1));
-    const [daysInMonth, setDaysInMonth] = useState(new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate())
+    const [firstWeekDayOfTheMonth, setFirstWeekDayOfTheMonth] = useState(new Date( currentDate.getFullYear(), currentDate.getMonth(), 1));
+    const [daysInMonth, setDaysInMonth] = useState(new Date(currentDate.getFullYear(), currentDate.getMonth()+1, 0).getDate())
     const [isEventModalOpen, setIsEventModalOpen] = useState(false);
     const [{id, start, end, title, type, price, placeName, address, phone}, setDisplayEventData] = useState({});
 
