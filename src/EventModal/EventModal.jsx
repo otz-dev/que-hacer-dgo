@@ -36,7 +36,7 @@ export const EventModal = (props)=>{
           </Typography>
 
           <Box className='sonia'>
-            sonia
+            sonia more text to display
           </Box>
           <Button onClick={()=>props.setIsEventModalOpen(false)}>Close</Button>
         </Box>
