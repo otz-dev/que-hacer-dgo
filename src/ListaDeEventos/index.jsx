@@ -8,7 +8,7 @@ export const ListaDeEventos = () =>{
 
     return (
         <Page>
-            <h2>{`Agenda del día ${pathname.split('/')[1]}`}</h2>
+            <h2>{`Agenda del día ${new Date(pathname.split('/')[1]).toLocaleDateString()}`}</h2>
         </Page>
     )
 }

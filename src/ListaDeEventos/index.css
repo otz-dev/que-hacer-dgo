@@ -1,3 +1,21 @@
 .main-page-container{
     min-height: 80vh;
 }
+
+.foot-container{
+    background-color: black;
+    color: white
+}
+
+.header{
+    background-color: black;
+
+    h1{
+    color: white !important;
+    }
+}
+
+.footer{
+    height: 100px;
+    background-color: black;
+}

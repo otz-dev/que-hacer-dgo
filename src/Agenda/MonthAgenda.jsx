@@ -65,7 +65,7 @@ const pathDefinition = `${new Date(start).getFullYear()}-${new Date(start).getMo
                 generateMonthDaysLayout(firstWeekDayOfTheMonth.getDay())
             }
         </div>
-        <div className='sarahi'>
+        <div className='contenedor-botones-meses'>
             <button disabled={!(selectedMonthNumber>0)} className='month-button' onClick={()=>{
                 setSelectedMonthNumber((prevSelectedMonthNumber)=>prevSelectedMonthNumber-1)
                 setMonth(()=>months[selectedMonthNumber-1]);
