@@ -58,7 +58,6 @@ export const DayCell = (weekDay, weekNumber, dayLimit, firstWeekDayOfTheMonth, d
     const [isEventModalOpen, setIsEventModalOpen] = useState(false);
     const [eventIdItem, setEventIdItem] = useState();
 
-    console.log(realMonthDay, eventsArray)
     return (
         <div className="day-cell">
             {
@@ -89,7 +88,7 @@ export const DayCell = (weekDay, weekNumber, dayLimit, firstWeekDayOfTheMonth, d
                                     <span id={`event-time-${event.id}`}>{event.time}</span>
                                     </>  
                                     || 
-                                    index === 1 && <span id={`more-events-`}>... Más Eventos</span>
+                                    index === 1 && <span className="event-title" id={`more-events-`}>Más Eventos</span>
                                 }
                             </li>
                             )

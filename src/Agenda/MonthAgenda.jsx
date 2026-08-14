@@ -1,11 +1,13 @@
+import { useState } from 'react';
 import {DayCell} from './DayCell';
 
 import './index.css';
 
 export const MonthAgenda = ()=> {
 
+    const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
     const currentDate = new Date();
-    const daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate();
+    // const daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate(); // used to populate the calendar
 
     const generateWeek = (weekNumber, dayLimit, firstWeekDayOfTheMonth)=>{
         return (
@@ -49,22 +51,40 @@ export const MonthAgenda = ()=> {
 
     }
 
-    const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
-    const date = new Date();
-    const month = months[date.getMonth()];
+    const [month, setMonth] = useState(months[currentDate.getMonth()]);
+    const [selectedMonthNumber, setSelectedMonthNumber] = useState(currentDate.getMonth());
+    const [firstWeekDayOfTheMonth, setFirstWeekDayOfTheMonth] = useState(new Date( currentDate.getFullYear(), currentDate.getMonth()+1, 1));
+    const [daysInMonth, setDaysInMonth] = useState(new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate())
 
-    const FirstWeekDayOfTheMonth = new Date( date.getFullYear(), date.getMonth(), 1);
+
+    console.log('Month', selectedMonthNumber, firstWeekDayOfTheMonth, daysInMonth)
 
   return (
     <>
     <header><h1>Que hacer en Durango</h1></header>
         
         <main className='calendar-container'>
-            <h2>{`Eventos en ${month}`}</h2>
+            <h2>{`Eventos en ${month} ${currentDate.getFullYear()}`}</h2>
             <div  >
                 {
-                    generateMonthDaysLayout(FirstWeekDayOfTheMonth.getDay())
+                    generateMonthDaysLayout(firstWeekDayOfTheMonth.getDay())
                 }
+            </div>
+            <div className='sarahi'>
+                <button disabled={!(selectedMonthNumber>0)} className='month-button' onClick={()=>{
+                    setSelectedMonthNumber((prevSelectedMonthNumber)=>prevSelectedMonthNumber-1)
+                    setMonth(()=>months[selectedMonthNumber-1]);
+                    setFirstWeekDayOfTheMonth(()=>new Date( currentDate.getFullYear(), selectedMonthNumber-1, 1));
+                    setDaysInMonth(new Date(currentDate.getFullYear(), selectedMonthNumber-2, 0).getDate()); // this is -2 considering that the state hasn't been updated and the actual month number
+                }}>Mes Anterior</button> 
+                
+                <button disabled={!(selectedMonthNumber<11)} className='month-button' onClick={()=>{
+                    setSelectedMonthNumber((prevSelectedMonthNumber)=>prevSelectedMonthNumber+1)
+                    setMonth(()=>months[selectedMonthNumber+1])
+                    setFirstWeekDayOfTheMonth(()=>new Date( currentDate.getFullYear(), selectedMonthNumber+1, 1));
+                    setDaysInMonth(new Date(currentDate.getFullYear(), selectedMonthNumber+2, 0).getDate()); // this is -2 considering that the state hasn't been updated and the actual month number
+
+                }}>Siguente Mes</button>
             </div>
         </main>
     
