@@ -104,8 +104,6 @@ const pathDefinition = `${new Date(start).getFullYear()}-${new Date(start).getMo
         <p>Dirección: {address}</p>
         <p>ID: {id}</p>
         </> 
-
-
         }/>}
     </Page>
   );
