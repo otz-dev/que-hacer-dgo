@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import {DayCell} from './DayCell';
 import { EventModal } from "../Modal/EventModal";
+import {Page} from '../Page';
 
 import './index.css';
 
@@ -50,15 +51,14 @@ export const MonthAgenda = ()=> {
             {generateWeek(3, (FirstWeekDayOfTheMonth*3)+(FirstWeekDayOfTheMonth), FirstWeekDayOfTheMonth)}
             {generateWeek(4, (FirstWeekDayOfTheMonth*4)+(FirstWeekDayOfTheMonth), FirstWeekDayOfTheMonth)}
             {generateWeek(5, (FirstWeekDayOfTheMonth*4)+(FirstWeekDayOfTheMonth), FirstWeekDayOfTheMonth)}
-
             </tbody>
-
         </table>)
-
     }
 
+const pathDefinition = `${new Date(start).getFullYear()}-${new Date(start).getMonth()}-${new Date(start).getDay()}`;
+
   return (
-    <>
+    <Page>
         <h2>{`Eventos en ${month} ${currentDate.getFullYear()}`}</h2>
         <div  >
             {
@@ -89,7 +89,7 @@ export const MonthAgenda = ()=> {
         } 
         children={
         id === 'all-events' &&  <>
-            <p>Existen multiples eventos agendados para esta fecha, <a href="#">visita la agenda del día.</a></p>
+            <p>Existen multiples eventos agendados para esta fecha, <a href={pathDefinition}>visita la agenda del día.</a></p>
         </> ||
         id == 'no-events' && 
         <>
@@ -107,6 +107,6 @@ export const MonthAgenda = ()=> {
 
 
         }/>}
-    </>
+    </Page>
   );
 }

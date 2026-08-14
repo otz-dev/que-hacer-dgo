@@ -1,19 +1,15 @@
 import {MonthAgenda} from './Agenda/MonthAgenda';
+import { Route, Routes, BrowserRouter } from "react-router";
+import { ListaDeEventos } from './ListaDeEventos';
 
 function App() {
   return (
-    <>
-      <header><h1>Qué hacer en Durango</h1></header>
-      
-      <main className='calendar-container'>
-          <MonthAgenda />
-      </main>
-    
-      <footer>
-          <div> <strong>Te gustaría que tu evento apareciera en nuestro calendario</strong></div>
-          <div>  envia un correo: abc.abc@quehacerendurango.com</div>
-      </footer>
-    </>
+  <BrowserRouter>
+    <Routes>
+    <Route index element={<MonthAgenda />} />
+    <Route path="*" element={<ListaDeEventos />} />
+    </Routes>
+</BrowserRouter>
   )
 } 
 
