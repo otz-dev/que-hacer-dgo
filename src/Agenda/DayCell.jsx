@@ -1,15 +1,19 @@
 import { useState } from "react";
 
-export const DayCell = (weekDay, weekNumber, dayLimit, firstWeekDayOfTheMonth, daysInMonth)=>{
+export const DayCell = (weekDay, weekNumber, dayLimit, firstWeekDayOfTheMonth, daysInMonth, isEventModalOpen, setIsEventModalOpen, setDisplayEventData)=>{
     
     const dayEventsList = [
        [ {
             id: '2026_08_01_1',
             start: '2026-06-25T00:00:00',
-            end: '2026-06-30T00:00:00',
+            end: '2026-06-30T03:00:00',
             title: 'Out of Office sdfghjk',
             type: 'deportes',
             allDay: true,
+            placeName: 'Teatro Victoria',
+            address: 'Bruno Martínez 322, Zona Centro, 34000 Durango, Dgo.',
+            phone: '618 812 1095',
+            price: '100MX'
         },
         {
             id: '2026_08_01_2',
@@ -55,17 +59,16 @@ export const DayCell = (weekDay, weekNumber, dayLimit, firstWeekDayOfTheMonth, d
     const eventsArray = dayEventsList[(weekDay+(7*weekNumber))-firstWeekDayOfTheMonth];
 
     const displayEventsItems =  realMonthDay >= firstWeekDayOfTheMonth && realMonthDay <(daysInMonth+firstWeekDayOfTheMonth);
-    const [isEventModalOpen, setIsEventModalOpen] = useState(false);
-    const [eventIdItem, setEventIdItem] = useState();
 
     return (
         <div className="day-cell">
             {
                 displayEventsItems && <div className="dayMonth">
                     <strong onClick={(e)=>{
-                        console.log('Clicked', e.target.id);
-                        setEventIdItem(e.target.id)
                         setIsEventModalOpen(true);
+                        setDisplayEventData({
+                            id: `${eventsArray.length? 'all-events': 'no-events'}`,
+                        });
                         }}> { ((weekDay+(7*weekNumber))-firstWeekDayOfTheMonth)+1 } 
                     </strong>
                 </div>
@@ -75,9 +78,19 @@ export const DayCell = (weekDay, weekNumber, dayLimit, firstWeekDayOfTheMonth, d
                     eventsArray.map((event, index)=> {
                         return( 
                             <li role='button' key={event.id} id={event.id} onClick={(e, i)=>{
-                                console.log('Clicked', e.target.id);
-                                setEventIdItem(e.target.id.split('-').at(-1))
                                 setIsEventModalOpen(true);
+                                setDisplayEventData({
+                                    id: `${event.id.at(-1)>1? 'all-events' : event.id}`,
+                                    start: event.start,
+                                    end: event.end,
+                                    title: event.title,
+                                    type: event.type,
+                                    allDay: event.allDay,
+                                    placeName: event.placeName,
+                                    address: event.address,
+                                    phone: event.phone,
+                                    price: event.price
+                                })
                                 
                             }}>
                                 {
