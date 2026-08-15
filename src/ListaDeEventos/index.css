@@ -32,6 +32,8 @@
         width: 80%;
         padding-left: 0%;
         overflow-y: auto;
+        /* width: fit-content; */
+        max-width: fit-content;
     }
     li{
         display: flex;
