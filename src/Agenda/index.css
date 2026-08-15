@@ -41,13 +41,21 @@
             display: flex;
             flex-direction: row;
             align-items: center;
-            justify-content: space-between;
+            /* justify-content: space-between; */
+            justify-content:space-evenly;
             padding: 2%;
 
-            .event-type {
+            .event-type{
                 width: 10px;
                 height: 10px;
                 background-color: #3498db;
+                border-radius: 50%;
+            }
+
+            .more-events{
+                width: 10px;
+                height: 10px;
+                background-color: red;
                 border-radius: 50%;
             }
 

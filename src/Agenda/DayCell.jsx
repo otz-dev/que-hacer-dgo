@@ -169,10 +169,12 @@ export const DayCell = (weekDay, weekNumber, dayLimit, firstWeekDayOfTheMonth, d
                                     <>
                                     <div className="event-type" id={`event-type-item-${event.id}`}/>
                                     <span className="event-title" id={`event-title-${event.id}`}>{event.title}</span>
-                                    <span id={`event-time-${event.id}`}>{event.time}</span>
                                     </>  
                                     || 
-                                    index === 1 && <span className="event-title" id={`more-events-`}>Más Eventos</span>
+                                    index === 1 && <>
+                                    <div className="more-events" id={`event-type-item-${event.id}`}/>
+                                    <span className="event-title" id={`more-events-`}>{`Más Eventos.`}</span>
+                                    </> 
                                 }
                             </li>
                             )
