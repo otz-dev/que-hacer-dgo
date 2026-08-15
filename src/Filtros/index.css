@@ -1,0 +1,8 @@
+.filter-container{
+    /* background-color: aqua; */
+    width: 100%;
+    height: 100px;
+    .event-type-filter{
+        display: inline !important
+    }
+}

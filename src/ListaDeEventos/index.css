@@ -3,6 +3,7 @@
 }
 
 .foot-container{
+    padding: 3%;
     background-color: black;
     color: white
 }
@@ -18,4 +19,45 @@
 .footer{
     height: 100px;
     background-color: black;
+}
+
+.lista-eventos{
+    /* border: solid 1px yellow; */
+    display: flex;
+    justify-content: center;
+    height: 80vh;
+    ul{
+        list-style: none;
+        /* justify-content: space-between; */
+        width: 80%;
+        padding-left: 0%;
+        overflow-y: auto;
+    }
+    li{
+        display: flex;
+        border: solid 1px lightgray;
+        padding: 1%;
+        margin: 1%;
+        justify-content: left;
+        align-items: center;
+        span{
+            padding: 1%;
+            
+        }
+        .event-title-list-item{
+            /* background-color: blue; */
+            max-width: 80%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .event-type{
+            width: 2px;
+            height: 2px;
+            background-color: #3498db;
+            border-radius: 50%;
+            padding: 1%;
+        }
+    }
+    
 }
