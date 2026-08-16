@@ -3,6 +3,8 @@ export const Page = (props)=>{
          <>
               <header className="header"><h1>¿Qué hacer en Durango?</h1></header>
               
+              <h2>{props.pageTitle}</h2>
+
               <main className='main-page-container'>
                   {props.children}
              </main>

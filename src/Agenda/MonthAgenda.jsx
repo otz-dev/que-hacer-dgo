@@ -7,12 +7,18 @@ import './index.css';
 
 export const MonthAgenda = ()=> {
 
-    const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
     const currentDate = new Date();
-    const [month, setMonth] = useState(months[currentDate.getMonth()]);
-    const [selectedMonthNumber, setSelectedMonthNumber] = useState(currentDate.getMonth());
-    const [firstWeekDayOfTheMonth, setFirstWeekDayOfTheMonth] = useState(new Date( currentDate.getFullYear(), currentDate.getMonth(), 1));
-    const [daysInMonth, setDaysInMonth] = useState(new Date(currentDate.getFullYear(), currentDate.getMonth()+1, 0).getDate())
+    const currentMonth = currentDate.getMonth()
+    const isLeapYear = !currentDate.getFullYear()%4;
+    const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+    const diasPorMesAno = [31, isLeapYear? 29: 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+    const [month, setMonth] = useState(months[currentMonth]); // Agosto
+    const [selectedMonthNumber, setSelectedMonthNumber] = useState(currentMonth); // 7
+    const [firstWeekDayOfTheMonth, setFirstWeekDayOfTheMonth] = useState(new Date( currentDate.getFullYear(), currentMonth, 1));
+
+    const [daysInMonth, setDaysInMonth] = useState(new Date(currentDate.getFullYear(), currentMonth+1, 0).getDate());
+    
     const [isEventModalOpen, setIsEventModalOpen] = useState(false);
     const [{id, start, end, title, type, price, placeName, address, phone}, setDisplayEventData] = useState({});
 
@@ -58,8 +64,8 @@ export const MonthAgenda = ()=> {
 const pathDefinition = `${new Date(start).getFullYear()}-${new Date(start).getMonth()}-${new Date(start).getDay()}`;
 
   return (
-    <Page>
-        <h2>{`Eventos en ${month} ${currentDate.getFullYear()}`}</h2>
+    <Page pageTitle={`Eventos en ${month} ${currentDate.getFullYear()}`}>
+        
         <div  >
             {
                 generateMonthDaysLayout(firstWeekDayOfTheMonth.getDay())
@@ -67,17 +73,18 @@ const pathDefinition = `${new Date(start).getFullYear()}-${new Date(start).getMo
         </div>
         <div className='contenedor-botones-meses'>
             <button disabled={!(selectedMonthNumber>0)} className='month-button' onClick={()=>{
+                console.log('selectedMonthNumber', selectedMonthNumber, months[selectedMonthNumber-1], months[selectedMonthNumber-2])
                 setSelectedMonthNumber((prevSelectedMonthNumber)=>prevSelectedMonthNumber-1)
                 setMonth(()=>months[selectedMonthNumber-1]);
                 setFirstWeekDayOfTheMonth(()=>new Date( currentDate.getFullYear(), selectedMonthNumber-1, 1));
-                setDaysInMonth(new Date(currentDate.getFullYear(), selectedMonthNumber-2, 0).getDate()); // this is -2 considering that the state hasn't been updated and the actual month number
+                setDaysInMonth(diasPorMesAno[selectedMonthNumber-1]);
             }}> {`<<< ${' '} Mes Anterior`}</button> 
             
             <button disabled={!(selectedMonthNumber<11)} className='month-button' onClick={()=>{
                 setSelectedMonthNumber((prevSelectedMonthNumber)=>prevSelectedMonthNumber+1)
                 setMonth(()=>months[selectedMonthNumber+1])
                 setFirstWeekDayOfTheMonth(()=>new Date( currentDate.getFullYear(), selectedMonthNumber+1, 1));
-                setDaysInMonth(new Date(currentDate.getFullYear(), selectedMonthNumber+2, 0).getDate()); // this is -2 considering that the state hasn't been updated and the actual month number
+                setDaysInMonth(diasPorMesAno[selectedMonthNumber+1]);
             }}>{`Siguente Mes ${' '} >>>`}</button>
         </div>
 
